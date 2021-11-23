@@ -1,0 +1,14 @@
+.blankSpace {
+    flex: 1 1 auto;
+}
+
+.bg-light {
+    background-color: transparent !important;
+}
+
+
+/* 
+.trn {
+    background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    z-index: 99;
+} */

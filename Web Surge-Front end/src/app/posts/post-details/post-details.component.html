@@ -1,0 +1,41 @@
+<div class="container mt-5">
+    <div class="row blog-entries">
+        <div class="col-md-12 col-lg-8 main-content">
+            <h1 class="mb-4">{{post.title}}</h1>
+            <div class="post-meta">
+                <span class="mr-2">{{post.author_name}} </span>
+                <span class="ml-2">{{post.creationDate}}</span>
+            </div>
+            <div class="post-content-body little-margin">
+                <p>{{post.body}}</p>
+            </div>
+            <div *ngIf="_authService.loggedIn()">
+                <a mat-raised-button routerLink="/comments/create">Add Comment</a>
+                <a mat-raised-button routerLink="/posts/edit/{{post._id}}">Edit</a>
+                <a mat-raised-button (click)="onDelete(post._id)">Delete</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="pt-5">
+        <ul class="comment-list">
+            <li class="comment">
+                <div class="comment-body">
+                    <h3>Comment body</h3>
+                    <div class="meta">Posted User</div>
+                    <div class="little-margin">
+                        <p>Comment posted date</p>
+                    </div>
+                    <div *ngIf="_authService.loggedIn()">
+                        <a mat-raised-button (click)="openEditCommentDialog()">Edit my comment</a>
+                        <a mat-raised-button>Delete my comment</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <!-- END comment-list -->
+    </div>
+</div>
+<!-- <ng-template #notFound>
+    <app-not-found></app-not-found>
+  </ng-template> -->

@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content white-text">
+                <div class="row">
+                    <div class="col s5" *ngIf="_authService.loggedIn()">
+                        <form #doctorForm="ngForm" (ngSubmit)="onSubmit(doctorForm)">
+                            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="doctorService.selectedDoctor._id">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="name" #name="ngModel" [(ngModel)]="doctorService.selectedDoctor.name" placeholder="Enter full name" required>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="address" #name="ngModel" [(ngModel)]="doctorService.selectedDoctor.address" placeholder="Address" required>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="mobile_no" #name="ngModel" [(ngModel)]="doctorService.selectedDoctor.mobile_no" placeholder="Mobile number" required>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="email" #name="ngModel" [(ngModel)]="doctorService.selectedDoctor.email" placeholder="Email Address" required>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <button class="btn btn-custom right" type="button" (click)="resetForm(doctorForm)">Reset</button>
+                                    <button class="btn btn-custom right" type="submit" [disabled]="!doctorForm.valid">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col s7">
+                        <table class="responsive-table highlight">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>Mobile number</th>
+                                    <th>E-mail</th>
+                                </tr>
+                            </thead>
+                            <tr *ngFor="let doc of doctorService.doctors">
+                                <td>{{doc.name}}</td>
+                                <td>{{doc.address}}</td>
+                                <td>{{doc.mobile_no}}</td>
+                                <td>{{doc.email}}</td>
+                                <td *ngIf="_authService.loggedIn()">
+                                    <a class="action-btn" (click)="onEdit(doc)">
+                                        <i class="material-icons">edit</i>
+                                    </a>
+                                    <a class="action-btn" (click)="onDelete(doc._id,doctorForm)">
+                                        <i class="material-icons">delete</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

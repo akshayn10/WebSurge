@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="page-header text-center">
+        <h2>Share Your Story with us</h2>
+    </div>
+    <form #postForm="ngForm" (ngSubmit)="onSubmit(postForm)">
+        <!-- <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="employeeService.selectedEmployee._id"> -->
+        <div class="row">
+            <div class="input-field col s12">
+
+                <input type="text" name="author_name" #name="ngModel" [(ngModel)]="postService.selectedPost.author_name" placeholder="Enter name" required>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+
+                <input type="text" name="title" #name="ngModel" [(ngModel)]="postService.selectedPost.title" placeholder="Title" required>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+
+                <input type="text" name="body" #name="ngModel" [(ngModel)]="postService.selectedPost.body" placeholder="Body" required>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <button class="btn btn-custom right" type="button" (click)="resetForm(postForm)">Reset</button>
+                <button class="btn btn-custom right" type="submit" [disabled]="!postForm.valid">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>

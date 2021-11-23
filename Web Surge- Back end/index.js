@@ -1,0 +1,15 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const { mongoose } = require('./db.js');
+const cors = require('cors');
+var postController = require('./controllers/postController.js');
+var doctorController = require('./controllers/doctorController.js');
+var userController = require('./controllers/userController.js');
+var app = express();
+const PORT = process.env.PORT || 3000;
+app.use(bodyParser.json());
+app.use(cors({ origin: 'http://localhost:4200' }));
+app.listen(PORT, () => console.log('Server started at port 3000'));
+app.use('/posts', postController);
+app.use('/doctors', doctorController);
+app.use('/users', userController);

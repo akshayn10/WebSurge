@@ -1,0 +1,22 @@
+<div class="container mt-5">
+    <div>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Author name</th>
+                    <th>Title</th>
+                    <th>Body</th>
+                    <th>Creation date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="pointer" *ngFor="let p of postService.posts" (click)="navigate(p._id)">
+                    <td>{{p.author_name}}</td>
+                    <td>{{p.title.substr(0, 50)}}</td>
+                    <td>{{p.body.substr(0, 50)}}</td>
+                    <td>{{p.creationDate}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
